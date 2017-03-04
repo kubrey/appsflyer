@@ -1,0 +1,32 @@
+{
+    "name": "kubrey/appsflyer",
+    "description": "Appsflyer API wrapper",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sergey Kubrey",
+            "email": "kubrey.work@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+
+    "license":"MIT",
+    "keywords": [
+        "search ad",
+        "appsflyer",
+        "wrapper"
+    ],
+    "version": "1.0.0",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "appsflyer": "src"
+        }
+    }
+
+}
