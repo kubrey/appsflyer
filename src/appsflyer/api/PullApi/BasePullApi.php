@@ -8,6 +8,11 @@ namespace appsflyer\api\PullApi;
 
 use appsflyer\api\BaseApi;
 
+/**
+ * Class BasePullApi
+ * @package appsflyer\api\PullApi
+ * Limits: Max line count: 200K | Oldest available data: 90 Days ago. Max requests 12 per day per app, 60 per account in total.
+ */
 class BasePullApi extends BaseApi
 {
     protected $apiKey = null;

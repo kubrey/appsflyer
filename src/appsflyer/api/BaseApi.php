@@ -22,7 +22,6 @@ class BaseApi
     protected $tmpFilePointer;
     protected $tmpFileName;
 
-
     /**
      * @param $url
      * @return null|string path to file
@@ -35,7 +34,6 @@ class BaseApi
         }
         $this->curl = curl_init();
         $destination = dirname(__FILE__) . "/../../tmp/" . $this->tmpFileName;
-        var_dump($destination);
         $this->tmpFilePointer = fopen($destination, 'w+');
         $options = [
             CURLOPT_RETURNTRANSFER => true,
@@ -84,8 +82,8 @@ class BaseApi
             throw  new \Exception($this->lastCurlError);
         }
         if (!isset($this->lastCurlInfo['http_code']) || $this->lastCurlInfo['http_code'] != "200") {
-            throw new \Exception("Curl Http Code is " . isset($this->lastCurlInfo['http_code']) ?
-                $this->lastCurlInfo['http_code'] : "empty");
+            throw new \Exception("Curl Http Code is " . (isset($this->lastCurlInfo['http_code']) ?
+                $this->lastCurlInfo['http_code'] : "empty"));
         }
 
         return $this;
@@ -126,9 +124,14 @@ class BaseApi
      * @return $this
      */
     public function setTmpFileName($name){
-        $this->tmpFolder = dirname(__FILE__) . "/../../tmp/";
         $this->tmpFileName = $name;
         return $this;
+    }
+
+    public function __destruct() {
+        if(is_file($this->lastCurlFile)){
+            unlink($this->lastCurlFile);
+        }
     }
 
 }
