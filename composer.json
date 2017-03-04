@@ -8,15 +8,13 @@
             "email": "kubrey.work@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-
     "license":"MIT",
     "keywords": [
         "search ad",
         "appsflyer",
         "wrapper"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "require": {
         "php": ">=5.4.0"
     },
