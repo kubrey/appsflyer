@@ -14,7 +14,7 @@
         "appsflyer",
         "wrapper"
     ],
-    "version": "1.0.2",
+    "version": "1.0.3",
     "require": {
         "php": ">=5.4.0"
     },
@@ -22,7 +22,7 @@
         "phpunit/phpunit": "4.1.*"
     },
     "autoload": {
-        "psr-4": {
+        "psr-0": {
             "appsflyer\\": "src/"
         }
     }
