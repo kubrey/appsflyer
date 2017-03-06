@@ -54,7 +54,7 @@ class BaseApi
      * @param array $options
      * @return $this
      */
-    public function setAdditionalCurlOptions($options = []){
+    public function setAdditionalCurlOptions($options = []) {
         if ($options && is_array($options)) {
             foreach ($options as $key => $val) {
                 $this->curlOptions[$key] = $val;
@@ -83,7 +83,7 @@ class BaseApi
         }
         if (!isset($this->lastCurlInfo['http_code']) || $this->lastCurlInfo['http_code'] != "200") {
             throw new \Exception("Curl Http Code is " . (isset($this->lastCurlInfo['http_code']) ?
-                $this->lastCurlInfo['http_code'] : "empty"));
+                    $this->lastCurlInfo['http_code'] : "empty"));
         }
 
         return $this;
@@ -107,6 +107,14 @@ class BaseApi
         return $this->lastCurlFile;
     }
 
+    public function setLastCurlFile($path) {
+        if (!is_file($path) || !is_readable($path)) {
+            throw  new \Exception("Path is not valid or readable");
+        }
+        $this->lastCurlFile = $path;
+        return $this;
+    }
+
     public function getLastCurlInfo() {
         return $this->lastCurlInfo;
     }
@@ -123,13 +131,13 @@ class BaseApi
      * @param $name
      * @return $this
      */
-    public function setTmpFileName($name){
+    public function setTmpFileName($name) {
         $this->tmpFileName = $name;
         return $this;
     }
 
     public function __destruct() {
-        if(is_file($this->lastCurlFile)){
+        if (is_file($this->lastCurlFile)) {
             unlink($this->lastCurlFile);
         }
     }

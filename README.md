@@ -21,7 +21,9 @@
           })
           ->getInAppEventsReport($idApp);
  
-      $arr = $api->returnAsArray();
+      $arr = $api->getCsvAsArray();
+      //to get mapped array
+      $mapped = $api->mapCsvArrayToColumns($arr);
       var_dump($api->getLastCurlError(), $api->getLastCurlFile());
   } catch (\Exception $e) {
       var_dump($e->getMessage());
